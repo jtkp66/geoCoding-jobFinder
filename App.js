@@ -4,6 +4,7 @@ import {
   createBottomTabNavigator,
   createStackNavigator
 } from "react-navigation";
+import { Provider } from "react-redux";
 
 import store from "./store";
 import AuthScreen from "./screens/AuthScreen";
@@ -41,17 +42,19 @@ export default class App extends React.Component {
         }
       },
       {
-        navigationOptions: {
-          tabBarVisible: false
-        },
-        lazy: true
+        // navigationOptions: {
+        //   tabBarVisible: false
+        // },
+        // lazy: true
       }
     );
 
     return (
+      <Provider store={store}>
         <View style={styles.container}>
           <MainNavigator />
         </View>
+      </Provider>
     );
   }
 }
